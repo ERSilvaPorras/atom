@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+set -eu
+
+COMMAND=$1
+shift
+
+case "$COMMAND" in
+    update)
+        source "$(dirname "$0")/../lib/update.sh"
+        update "$@"
+        ;;
+    *)
+        echo "Command not found""
+        ;;
+esac
