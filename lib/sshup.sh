@@ -2,7 +2,7 @@
 
 set -eu
 
-$NAME_SSH_KEY=$1
+NAME_SSH_KEY=$1
 
 sshup() {
     eval "$(ssh-agent -s)"
