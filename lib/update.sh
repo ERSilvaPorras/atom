@@ -2,8 +2,6 @@
 set -eu
 
 update() {
-    INSTALL_DIR="$HOME/.atom"
-
     echo "[INFO] Updating Atom CLI ..."
 
     # check installation
