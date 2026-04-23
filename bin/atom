@@ -11,6 +11,6 @@ case "$COMMAND" in
         update "$@"
         ;;
     *)
-        echo "Command not found""
+        echo "Command not found"
         ;;
 esac
