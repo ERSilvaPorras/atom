@@ -21,6 +21,10 @@ case "$COMMAND" in
         . "$SCRIPT_DIR/../lib/scr.sh"
         scr "$@"
         ;;
+    sshup)
+        . "$SCRIPT_DIR/../lib/sshup.sh"
+        sshup "$@"
+        ;;
     *)
         echo "Command not found"
         ;;
