@@ -13,6 +13,10 @@ case "$COMMAND" in
         . "$SCRIPT_DIR/../lib/update.sh"
         update "$@"
         ;;
+    rmpycache)
+        . "$SCRIPT_DIR/../lib/rmpycache.sh"
+        rmpycache "$@"
+        ;;
     *)
         echo "Command not found"
         ;;
