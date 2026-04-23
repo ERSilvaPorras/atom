@@ -8,5 +8,5 @@ pycache() {
 
 rmpycache() {
     find . -type d -name "__pycache__" -exec rm -R {} +
-    pycache()
+    pycache
 }
