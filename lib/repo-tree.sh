@@ -2,7 +2,7 @@
 
 set -eu
 
-tree_repo () {
+repo_tree () {
     CURRENT_DIR=$(pwd)
     REPO_NAME=$(basename "$CURRENT_DIR")
     REPO_TREE=$(tree -L 5 -I ".venv" --noreport)

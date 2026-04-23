@@ -27,7 +27,7 @@ case "$COMMAND" in
         ;;
     repo-tree)
         . "$SCRIPT_DIR/../lib/repo-tree.sh"
-        repo-tree "$@"
+        repo_tree "$@"
         ;;
     version)
         . "$SCRIPT_DIR/../lib/version.sh"
