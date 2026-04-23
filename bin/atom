@@ -25,6 +25,10 @@ case "$COMMAND" in
         . "$SCRIPT_DIR/../lib/sshup.sh"
         sshup "$@"
         ;;
+    repo-tree)
+        . "$SCRIPT_DIR/../lib/tree-repo.sh"
+        repo-tree "$@"
+        ;;
     version)
         . "$SCRIPT_DIR/../lib/version.sh"
         version "$@"
