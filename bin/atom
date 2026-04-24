@@ -34,6 +34,10 @@ case "$COMMAND" in
         . "$SCRIPT_DIR/../lib/version.sh"
         version "$@"
         ;;
+    vscode)
+        . "$SCRIPT_DIR/../lib/vscode.sh"
+        vscode "$@"
+        ;;
     *)
         echo "Command not found"
         ;;
