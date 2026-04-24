@@ -9,6 +9,10 @@ CLI en shell para automatizar tareas locales de desarrollo (actualizacion del re
 - Acceso al repositorio privado
 
 ## Instalacion
+Cuando el proyecto este publico usar:
+```sh
+curl -fsSL https://raw.githubusercontent.com/ersilvaporras/atom/main/install.sh | zsh
+```
 
 Desde la raiz del proyecto:
 
