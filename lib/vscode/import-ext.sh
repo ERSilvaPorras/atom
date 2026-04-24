@@ -2,16 +2,15 @@
 
 set -eu
 
-vscode_import() {
-    REPO_BACKUP="$HOME/Documents/git/learn-vscode"
-    EXTENSIONS="$REPO_BACKUP/config/extensions.txt"
+import_ext() {
+    REPO_BACKUP_PATH="$HOME/Documents/git/learn-vscode"
+    EXTENSIONS="$REPO_BACKUP_PATH/config/extensions.txt"
 
-    if [ ! -d "$REPO_BACKUP"]; then
-        echo "[ERROR] Backup repository not found"
-        exit 1
+    if [ ! -d "$REPO_BACKUP_PATH"]; then
+        git clone "$REPO_BACKUP_PATH" "$REPO_BACKUP_URL"
     fi
 
-    if [ ! -d "$REPO_BACKUP/.git" ]; then
+    if [ ! -d "$REPO_BACKUP_PATH/.git" ]; then
         echo "[ERROR] Backup repository is not a git repository"
         exit 1
     fi
