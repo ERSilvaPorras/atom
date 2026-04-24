@@ -7,7 +7,7 @@ import_ext() {
     EXTENSIONS="$REPO_BACKUP_PATH/config/extensions.txt"
 
     if [ ! -d "$REPO_BACKUP_PATH"]; then
-        git clone "$REPO_BACKUP_PATH" "$REPO_BACKUP_URL"
+        git clone "$REPO_BACKUP_URL" "$REPO_BACKUP_PATH"
     fi
 
     if [ ! -d "$REPO_BACKUP_PATH/.git" ]; then
