@@ -23,6 +23,9 @@ export_ext() {
         . "$SCRIPT_DIR/../lib/sshup.sh"
         sshup "$1"
         git -C "$INSTALL_DIR" commit -m "docs(backup): update vscode extensions list"
-        git -C "$INSTALL_DIR" push origin main  
+        git -C "$INSTALL_DIR" push origin main
+        echo "[OK] Extensions exported and pushed to repository successfully 🚀"
+    else
+        echo "[OK] No changes detected in extensions list. Nothing to export."
     fi
 }
