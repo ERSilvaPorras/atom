@@ -5,7 +5,7 @@ set -eu
 export_ext() {
     EXTENSION_LIST=$(code --list-extensions)
 
-    
+
     if [ ! -d "$INSTALL_DIR" ]; then
         git clone "$REPO_BACKUP_URL" "$INSTALL_DIR"
         atom src "$(basename "$INSTALL_DIR")"
@@ -16,7 +16,7 @@ export_ext() {
         exit 1
     fi
 
-    cat "$EXTENSION_LIST" > "$EXTENSIONS_FILE_PATH"
+    echo "$EXTENSION_LIST" > "$EXTENSIONS_FILE_PATH"
     
     if ! git -C "$INSTALL_DIR" diff --quiet "$EXTENSIONS_FILE_PATH"; then
         git -C "$INSTALL_DIR" add "$EXTENSIONS_FILE_PATH"

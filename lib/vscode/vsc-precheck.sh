@@ -3,11 +3,11 @@
 set -eu
 
 vsc_precheck() {
-    if [ ! -d "$REPO_BACKUP_PATH" ]; then
-        git clone "$REPO_BACKUP_URL" "$REPO_BACKUP_PATH"
+    if [ ! -d "$INSTALL_DIR" ]; then
+        git clone "$REPO_BACKUP_URL" "$INSTALL_DIR"
     fi
 
-    if [ ! -d "$REPO_BACKUP_PATH/.git" ]; then
+    if [ ! -d "$INSTALL_DIR/.git" ]; then
         echo "[ERROR] Backup repository is not a git repository"
         exit 1
     fi
