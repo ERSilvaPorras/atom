@@ -4,6 +4,9 @@ set -eu
 
 vscode() {
     REPO_BACKUP_URL="git@github.com:ERSilvaPorras/learn-vscode.git"
+    INSTALL_DIR="$HOME/Documents/git/learn-vscode"
+    EXTENSIONS_FILE_PATH="$INSTALL_DIR/config/extensions.txt"
+    SETTINGS_FILE_PATH="$INSTALL_DIR/config/settings.json"
     COMMAND="${1:-}"
     shift
 
@@ -15,6 +18,10 @@ vscode() {
         import)
             . "$SCRIPT_DIR/../lib/vscode/import-ext.sh"
             import_ext "$@"
+            ;;
+        settings)
+            . "$SCRIPT_DIR/../lib/vscode/import-set.sh"
+            import_set "$@"
             ;;
         *)
             echo "Command not found"

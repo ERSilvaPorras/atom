@@ -2,9 +2,6 @@
 
 set -eu
 
-INSTALL_DIR="$HOME/Documents/git/learn-vscode"
-EXTENSIONS_FILE_PATH="$INSTALL_DIR/config/extensions.txt"
-
 export_ext() {
     EXTENSION_LIST=$(code --list-extensions)
 
@@ -15,11 +12,11 @@ export_ext() {
     fi
 
     if [ ! -d  "$INSTALL_DIR/.git" ]; then
-        echo "[ERROR] The directory $INSTALL_DIR is not a git repository."
+        echo "[ERROR] The directory is not a git repository."
         exit 1
     fi
 
-    echo "$EXTENSION_LIST" > "$EXTENSIONS_FILE_PATH"
+    cat "$EXTENSION_LIST" > "$EXTENSIONS_FILE_PATH"
     
     if ! git -C "$INSTALL_DIR" diff --quiet "$EXTENSIONS_FILE_PATH"; then
         git -C "$INSTALL_DIR" add "$EXTENSIONS_FILE_PATH"

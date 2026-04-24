@@ -3,25 +3,11 @@
 set -eu
 
 import_ext() {
-    REPO_BACKUP_PATH="$HOME/Documents/git/learn-vscode"
-    EXTENSIONS="$REPO_BACKUP_PATH/config/extensions.txt"
+    . "$SCRIPT_DIR/../lib/vscode/vsc-precheck.sh"
+    vsc_precheck
 
-    if [ ! -d "$REPO_BACKUP_PATH" ]; then
-        git clone "$REPO_BACKUP_URL" "$REPO_BACKUP_PATH"
-    fi
-
-    if [ ! -d "$REPO_BACKUP_PATH/.git" ]; then
-        echo "[ERROR] Backup repository is not a git repository"
-        exit 1
-    fi
-
-    if [ ! -f "$EXTENSIONS" ]; then
+    if [ ! -f "$EXTENSIONS_FILE_PATH" ]; then
         echo "[ERROR] Extensions file not found"
-        exit 1
-    fi
-
-    if [ ! code --version >/dev/null 2>&1 ]; then
-        echo "[ERROR] VSCode CLI not found. Please install Visual Studio Code and ensure 'code' command is available in PATH."
         exit 1
     fi
     
@@ -29,7 +15,7 @@ import_ext() {
         if [ -n "$EXTENSION" ]; then
              code --install-extension "$EXTENSION" --force
         fi
-    done < "$EXTENSIONS"
+    done < "$EXTENSIONS_FILE_PATH"
 
     echo "[OK] Extensions installed successfully 🚀"
 }
