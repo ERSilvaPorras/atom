@@ -38,6 +38,10 @@ case "$COMMAND" in
         . "$SCRIPT_DIR/../lib/vscode.sh"
         vscode "$@"
         ;;
+    sshc)
+        . "$SCRIPT_DIR/../lib/sshc.sh"
+        sshc "$@"
+        ;;
     *)
         echo "Command not found"
         ;;
