@@ -6,7 +6,7 @@ import_ext() {
     REPO_BACKUP_PATH="$HOME/Documents/git/learn-vscode"
     EXTENSIONS="$REPO_BACKUP_PATH/config/extensions.txt"
 
-    if [ ! -d "$REPO_BACKUP_PATH"]; then
+    if [ ! -d "$REPO_BACKUP_PATH" ]; then
         git clone "$REPO_BACKUP_URL" "$REPO_BACKUP_PATH"
     fi
 
