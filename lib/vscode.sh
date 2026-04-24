@@ -11,6 +11,10 @@ vscode() {
             . "$SCRIPT_DIR/../lib/vscode/backup.sh"
             backup "$@"
             ;;
+        import)
+            . "$SCRIPT_DIR/../lib/vscode/import.sh"
+            vscode_import "$@"
+            ;;
         *)
             echo "Command not found"
             ;;
