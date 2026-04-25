@@ -12,15 +12,15 @@ vscode() {
 
     case "$COMMAND" in
         export)
-            . "$SCRIPT_DIR/../lib/vscode/export-ext.sh"
+            . "$SCRIPT_DIR/../lib/commands/vscode/export-ext.sh"
             export_ext "$@"
             ;;
         import)
-            . "$SCRIPT_DIR/../lib/vscode/import-ext.sh"
+            . "$SCRIPT_DIR/../lib/commands/vscode/import-ext.sh"
             import_ext "$@"
             ;;
         settings)
-            . "$SCRIPT_DIR/../lib/vscode/import-set.sh"
+            . "$SCRIPT_DIR/../lib/commands/vscode/import-set.sh"
             import_set "$@"
             ;;
         *)

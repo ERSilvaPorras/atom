@@ -17,7 +17,7 @@ update() {
     fi
         
     echo "[INFO] Pulling latest changes ..."
-    . "$SCRIPT_DIR/../lib/sshup.sh"
+    . "$SCRIPT_DIR/../lib/commands/sshup.sh"
     sshup "$1"
     git -C "$INSTALL_DIR" pull
     echo "[OK] Successfully updated 🚀"

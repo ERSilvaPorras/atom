@@ -11,39 +11,39 @@ shift
 
 case "$COMMAND" in
     update)
-        . "$SCRIPT_DIR/../lib/update.sh"
+        . "$SCRIPT_DIR/../lib/commands/update.sh"
         update "$@"
         ;;
     rmpycache)
-        . "$SCRIPT_DIR/../lib/rmpycache.sh"
+        . "$SCRIPT_DIR/../lib/commands/rmpycache.sh"
         rmpycache "$@"
         ;;
     src)
-        . "$SCRIPT_DIR/../lib/scr.sh"
+        . "$SCRIPT_DIR/../lib/commands/scr.sh"
         scr "$@"
         ;;
     sshup)
-        . "$SCRIPT_DIR/../lib/sshup.sh"
+        . "$SCRIPT_DIR/../lib/commands/sshup.sh"
         sshup "$@"
         ;;
     repo-tree)
-        . "$SCRIPT_DIR/../lib/repo-tree.sh"
+        . "$SCRIPT_DIR/../lib/commands/repo-tree.sh"
         repo_tree "$@"
         ;;
     version)
-        . "$SCRIPT_DIR/../lib/version.sh"
+        . "$SCRIPT_DIR/../lib/commands/version.sh"
         version "$@"
         ;;
     vscode)
-        . "$SCRIPT_DIR/../lib/vscode.sh"
+        . "$SCRIPT_DIR/../lib/commands/vscode.sh"
         vscode "$@"
         ;;
     sshc)
-        . "$SCRIPT_DIR/../lib/sshc.sh"
+        . "$SCRIPT_DIR/../lib/commands/sshc.sh"
         sshc "$@"
         ;;
     repos)
-        . "$SCRIPT_DIR/../lib/repos.sh"
+        . "$SCRIPT_DIR/../lib/commands/repos.sh"
         status_repos "$@"
         ;;
     *)

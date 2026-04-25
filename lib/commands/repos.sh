@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-source "$HOME/Documents/git/colors.sh"
+source "$SCRIPT_DIR/../lib/helpers/colors.sh"
 set -eu
 
 status_repos() {
@@ -14,7 +14,7 @@ status_repos() {
     fi
 
     # Load SSH configuration
-    . "$SCRIPT_DIR/../lib/sshup.sh"
+    . "$SCRIPT_DIR/../lib/commands/sshup.sh"
     sshup "$SSH_NAME"
 
     # Iterate over each repository in the specified directory

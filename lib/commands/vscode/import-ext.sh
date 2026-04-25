@@ -3,7 +3,7 @@
 set -eu
 
 import_ext() {
-    . "$SCRIPT_DIR/../lib/vscode/vsc-precheck.sh"
+    . "$SCRIPT_DIR/../lib/helpers/vscode/vsc-precheck.sh"
     vsc_precheck
 
     if [ ! -f "$EXTENSIONS_FILE_PATH" ]; then

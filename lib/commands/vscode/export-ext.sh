@@ -20,7 +20,7 @@ export_ext() {
     
     if ! git -C "$INSTALL_DIR" diff --quiet "$EXTENSIONS_FILE_PATH"; then
         git -C "$INSTALL_DIR" add "$EXTENSIONS_FILE_PATH"
-        . "$SCRIPT_DIR/../lib/sshup.sh"
+        . "$SCRIPT_DIR/../lib/commands/sshup.sh"
         sshup "$1"
         git -C "$INSTALL_DIR" commit -m "docs(backup): update vscode extensions list"
         git -C "$INSTALL_DIR" push origin main
