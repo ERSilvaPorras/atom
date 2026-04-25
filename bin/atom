@@ -42,6 +42,10 @@ case "$COMMAND" in
         . "$SCRIPT_DIR/../lib/sshc.sh"
         sshc "$@"
         ;;
+    repos)
+        . "$SCRIPT_DIR/../lib/repos.sh"
+        status_repos "$@"
+        ;;
     *)
         echo "Command not found"
         ;;
