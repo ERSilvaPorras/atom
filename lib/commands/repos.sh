@@ -1,9 +1,11 @@
 #!/usr/bin/env sh
 
-source "$SCRIPT_DIR/../lib/helpers/colors.sh"
 set -eu
 
 status_repos() {
+    # Load colors for output
+    . "$SCRIPT_DIR/../lib/helpers/colors.sh"
+    
     REPOS_WORKDIR=${1:-"$HOME/Documents/git"}
     SSH_NAME=${2:-"ghp"}
     
