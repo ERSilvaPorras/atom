@@ -31,13 +31,13 @@ status_repos() {
             continue
         fi
 
-        echo -e "#######################################################################"
+        printf "#######################################################################\n"
         repo_dir=$(basename "$repo_dir")
         repo_info="Repositorio: ${repo_dir}"
 
         # Verify if the remote repository is accessible
-        if ! git fetch &>/dev/null; then
-            echo -e "📁 ${red} ${repo_info} ${reset}  🚨  El repositorio remoto no existe o no es accesible"
+        if ! git fetch >/dev/null 2>&1; then
+            printf "📁 ${red} ${repo_info} ${reset}  🚨  El repositorio remoto no existe o no es accesible\n"
             continue
         fi
 
@@ -70,10 +70,10 @@ status_repos() {
         fi
 
         # Print repository information with status
-        echo -e "📁 ${color} ${repo_info} ${reset} ${status}"
+        printf "📁 ${color} ${repo_info} ${reset} ${status}\n"
 
         if [ ! -z "$sub_info" ]; then
-            echo -e "$sub_info"
+            printf "${sub_info}\n"
         fi
     done
 
