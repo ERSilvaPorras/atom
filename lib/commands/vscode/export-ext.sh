@@ -18,14 +18,6 @@ export_ext() {
 
     echo "$EXTENSION_LIST" > "$EXTENSIONS_FILE_PATH"
     
-    if ! git -C "$INSTALL_DIR" diff --quiet "$EXTENSIONS_FILE_PATH"; then
-        git -C "$INSTALL_DIR" add "$EXTENSIONS_FILE_PATH"
-        . "$SCRIPT_DIR/../lib/commands/sshup.sh"
-        sshup "$1"
-        git -C "$INSTALL_DIR" commit -m "docs(backup): update vscode extensions list"
-        git -C "$INSTALL_DIR" push origin main
-        echo "[OK] Extensions exported and pushed to repository successfully 🚀"
-    else
-        echo "[OK] No changes detected in extensions list. Nothing to export."
-    fi
+    . "$SCRIPT_DIR/../lib/helpers/sync-repo.sh"
+    sync_repo "$INSTALL_DIR" "$EXTENSIONS_FILE_PATH"
 }
