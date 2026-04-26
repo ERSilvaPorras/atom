@@ -35,3 +35,6 @@ else
 fi
 
 echo "[OK] Successfully installed 🚀"
+
+. "$SCRIPT_DIR/../lib/commands/scr.sh"
+scr "atom"
