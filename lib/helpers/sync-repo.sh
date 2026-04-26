@@ -14,7 +14,7 @@ sync_repo() {
         . "$SCRIPT_DIR/../lib/commands/sshup.sh"
         sshup "$SSH_NAME"
         . "$SCRIPT_DIR/../lib/commands/scr.sh"
-        src "$(basename "$REPO_DIR")"
+        scr "$(basename "$REPO_DIR")"
         git -C "$REPO_DIR" commit -m "$MSG_COMMIT"
         git -C "$REPO_DIR" push origin main
         printf "\t[OK] Extensions exported and pushed to repository successfully 🚀\n"
