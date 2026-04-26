@@ -17,8 +17,8 @@ sync_repo() {
         scr "$(basename "$REPO_DIR")"
         git -C "$REPO_DIR" commit -m "$MSG_COMMIT"
         git -C "$REPO_DIR" push origin main
-        printf "\t[OK] Extensions exported and pushed to repository successfully 🚀\n"
+        printf "\t[OK] Exported and pushed to repository successfully 🚀\n"
     else
-        printf "\t[OK] No changes detected in extensions list. Nothing to export.\n"
+        printf "\t[OK] No changes detected. Nothing to export.\n"
     fi
 }
