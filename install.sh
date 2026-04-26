@@ -19,12 +19,10 @@ chmod +x "$INSTALL_DIR/bin/atom"
 
 # Symlink global
 echo "[INFO] Creating symlink ..."
-
-LOCAL_PATH="$INSTALL_DIR/bin/atom"
-if [ ! -d $LOCAL_PATH ]; then
-    mkdir -p "$(dirname "$LOCAL_PATH")"
-    ln -sf "$LOCAL_PATH" "$BIN_PATH"
+if [ ! -d "$BIN_PATH" ]; then
+    mkdir -p "$(dirname "$BIN_PATH")"
 fi
+ln -sf ""$INSTALL_DIR/bin/atom"" "$BIN_PATH"
 
 # Add to PATH
 if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
