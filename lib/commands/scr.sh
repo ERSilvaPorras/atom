@@ -2,10 +2,10 @@
 
 set -eu
 
-NAME_REPO=${1:-}
-REPO_DIR="$HOME/Documents/git/$NAME_REPO"
 
 scr() {
+    NAME_REPO=${1:-}
+    REPO_DIR="$HOME/Documents/git/$NAME_REPO"
     if [ -z "$NAME_REPO" ]; then
         REPO_DIR="."
     fi
