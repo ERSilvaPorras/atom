@@ -37,7 +37,7 @@ is_ubuntu_system() {
 
 export_server() {
     if [ ! -d "$INSTALL_DIR" ]; then
-        git -C "$REPO_BACKUP_URL" "$INSTALL_DIR" clone
+        git clone "$REPO_BACKUP_URL" "$INSTALL_DIR"
     fi
 
     if is_ubuntu_system; then
