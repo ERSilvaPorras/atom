@@ -3,6 +3,7 @@
 set -eu
 
 REPO_URL="https://github.com/ERSilvaPorras/atom.git"
+REPO_SSH_URL="git@github.com:ERSilvaPorras/atom.git"
 INSTALL_DIR="$HOME/.atom"
 BIN_PATH="$HOME/.local/bin/atom"
 
@@ -36,5 +37,5 @@ fi
 
 echo "[OK] Successfully installed 🚀"
 
-. "$SCRIPT_DIR/../lib/commands/scr.sh"
-scr "atom"
+git -C "$INSTALL_DIR" remote set-url origin "$REPO_SSH_URL"
+echo "[INFO] Repository URL set to SSH: $REPO_SSH_URL"
