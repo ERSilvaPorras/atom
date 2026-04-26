@@ -5,7 +5,7 @@ set -eu
 . "$SCRIPT_DIR/../lib/helpers/colors.sh"
 
 save_apt_mark() {
-    apt-mark showmanual > "$INSTALL_DIR/config/apt-mark.txt"
+    apt-mark showmanual > "$APT_MARK_FILE_PATH"
 }
 
 save_zshrc() {
@@ -22,7 +22,7 @@ save_images_docker() {
         return
     fi
 
-    docker images --format "{{.Repository}}:{{.Tag}}" > "$INSTALL_DIR/config/images-docker.txt"
+    docker images --format "{{.Repository}}:{{.Tag}}" > "$IMAGES_DOCKER_FILE_PATH"
 }
 
 is_ubuntu_system() {
