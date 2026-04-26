@@ -22,7 +22,7 @@ echo "[INFO] Creating symlink ..."
 if [ ! -d "$BIN_PATH" ]; then
     mkdir -p "$(dirname "$BIN_PATH")"
 fi
-ln -sf ""$INSTALL_DIR/bin/atom"" "$BIN_PATH"
+ln -sf "$INSTALL_DIR/bin/atom" "$BIN_PATH"
 
 # Add to PATH
 if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
