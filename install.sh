@@ -24,11 +24,11 @@ fi
 
 # Symlink global
 echo "[INFO] Creating symlink ..."
-if [ ! -d "$BIN_PATH" ]; then
+if [ ! -d "$(dirname "$BIN_PATH")" ]; then
     mkdir -p "$(dirname "$BIN_PATH")"
 fi
 
-if [ "$BIN_PATH" == "/usr/local/bin/atom" ]; then
+if [ "$BIN_PATH" = "/usr/local/bin/atom" ]; then
     sudo ln -sf "$INSTALL_DIR/bin/atom" "$BIN_PATH"
 else
     ln -sf "$INSTALL_DIR/bin/atom" "$BIN_PATH"
