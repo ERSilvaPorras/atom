@@ -31,11 +31,12 @@ if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
     case "$CURRENT_SHELL" in
         bash)
             echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
-            source "$HOME/.bashrc"
             ;;
         zsh)
             echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
-            . "$HOME/.zshrc"
+            ;;
+        sh)
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.profile"
             ;;
         *)
             echo "[ERROR] Unsupported shell: $CURRENT_SHELL. Please add $HOME/.local/bin to your PATH manually."
