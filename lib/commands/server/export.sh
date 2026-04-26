@@ -40,7 +40,10 @@ is_ubuntu_system() {
 }
 
 export_server() {
+    SSH_NAME=${1:-"ghp"}
     if [ ! -d "$INSTALL_DIR" ]; then
+        . "$SCRIPT_DIR/../lib/commands/sshup.sh"
+        sshup "$SSH_NAME"
         git clone "$REPO_BACKUP_URL" "$INSTALL_DIR"
     fi
 
