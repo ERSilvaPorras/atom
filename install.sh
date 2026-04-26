@@ -2,7 +2,7 @@
 
 set -eu
 
-REPO_URL="git@github.com:ERSilvaPorras/atom.git"
+REPO_URL="https://github.com/ERSilvaPorras/atom.git"
 INSTALL_DIR="$HOME/.atom"
 BIN_PATH="$HOME/.local/bin/atom"
 
