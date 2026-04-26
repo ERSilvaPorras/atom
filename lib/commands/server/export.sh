@@ -22,7 +22,7 @@ save_images_docker() {
         return
     fi
 
-    docker images --format "{{.Repository}}:{{.Tag}}" > "$IMAGES_DOCKER_FILE_PATH"
+    docker image --format "{{.Repository}}:{{.Tag}}" > "$IMAGES_DOCKER_FILE_PATH"
 }
 
 is_ubuntu_system() {
