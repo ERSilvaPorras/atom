@@ -53,4 +53,7 @@ export_server() {
     save_zshrc
     save_images_docker
     printf "\t${green}[INFO] Server configuration exported successfully.${reset}\n"
+
+    . "$SCRIPT_DIR/../lib/helpers/sync-repo.sh"
+    sync_repo "$INSTALL_DIR"
 }
