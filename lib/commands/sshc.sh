@@ -5,6 +5,7 @@ set -eu
 sshc() {
     read -p "Enter NAME_SSH_KEY (e.g., personal): " NAME_SSH_KEY
     read -p "Enter EMAIL: " EMAIL
+    read -p "Is Server? (y/n): " IS_SERVER
 
     TYPE_ENCRYPTION=$(ssh -Q key | grep -q "ed25519" && echo "ed25519" || echo "rsa")
     URL_GITHUB_SSH="https://github.com/settings/ssh/new"
@@ -34,11 +35,15 @@ sshc() {
     elif command -v pbcopy >/dev/null 2>&1; then
         pbcopy < "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub"
     elif command -v cpt >/dev/null 2>&1; then
-        cpt < "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub"
+        cpt "$(cat "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub")"
     else
         echo "[WARNING] No clipboard utility found. Please copy the public key manually"
     fi
 
     echo "[INFO] Remember to add the public key to your GitHub account. ⚠️"
-    nohup xdg-open "$URL_GITHUB_SSH" > /dev/null 2>&1 &
+    if [ "$IS_SERVER" = "y" ]; then
+        printf "Please add the following public key to your GitHub account:\n\n%s\n" "$(cat "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub")"
+    else
+        nohup xdg-open "$URL_GITHUB_SSH" > /dev/null 2>&1 &
+    fi
 }
