@@ -6,9 +6,9 @@ ZSHRC_FILE="$HOME/.zshrc"
 
 setup_ufw() {
     ufw --version
-    ufw allow OpenSSH
-    ufw allow 80/tcp
-    ufw allow 443/tcp
+    sudo ufw allow OpenSSH
+    sudo ufw allow 80/tcp
+    sudo ufw allow 443/tcp
     sudo ufw enable
     printf "\t[OK] UFW configured successfully 🚀\n"
 }
