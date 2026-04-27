@@ -33,7 +33,7 @@ sshc() {
         xclip -sel clip < "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub"
     elif command -v pbcopy >/dev/null 2>&1; then
         pbcopy < "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub"
-    elif command -v copy_text >/dev/null 2>&1; then
+    elif command -v cpt >/dev/null 2>&1; then
         cpt < "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub"
     else
         echo "[WARNING] No clipboard utility found. Please copy the public key manually"
