@@ -62,11 +62,12 @@ setup_zsh() {
         git clone "$ZSH_SYNTAX_HIGHLIGHTING_URL" "$PLUGINS_DIR/zsh-syntax-highlighting"
     fi
 
-    if ! grep -q "source $PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh" "$ZSHRC_FILE"; then
+    PLUGINS_REL_DIR="~/.local/share/zsh/plugins"
+    if ! grep -q "source $PLUGINS_REL_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh" "$ZSHRC_FILE"; then
         printf "\nsource $PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh\n" >> "$ZSHRC_FILE"
     fi
 
-    if ! grep -q "source $PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" "$ZSHRC_FILE"; then
+    if ! grep -q "source $PLUGINS_REL_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" "$ZSHRC_FILE"; then
         printf "\nsource $PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\n" >> "$ZSHRC_FILE"
     fi
 
