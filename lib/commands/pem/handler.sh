@@ -22,16 +22,14 @@ handler_pem() {
         printf "\t[INFO] SSH config entry for ${PEM_NAME} already exists. Skipping addition.\n"
         exit 0
     else
+        read -p "Enter DNS_SERVER: " DNS_SERVER
+        SSH_CONFIG_ENTRY="Host ${PEM_NAME}
+        HostName ${DNS_SERVER}
+        User ubuntu
+        IdentityFile ~/.ssh/${PEM_NAME}.pem"
         echo "$SSH_CONFIG_ENTRY" >> "$SSH_DIR/config"
         printf "\t[OK] SSH config entry for ${PEM_NAME} added successfully ✅\n"
     fi
-
-    read -p "Enter DNS_SERVER: " DNS_SERVER
-
-    SSH_CONFIG_ENTRY="Host ${PEM_NAME}
-    HostName ${DNS_SERVER}
-    User ubuntu
-    IdentityFile ~/.ssh/${PEM_NAME}.pem"
     
     if ! stat -c "%a" "$SSH_DIR/config" | grep -q "600"; then
         sudo chmod 600 "$SSH_DIR/config"
