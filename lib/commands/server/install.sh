@@ -87,7 +87,7 @@ eza() {
     alias lt='eza --tree'
     alias bat='batcat'"
 
-    if ! grep -F "$EZA_ENTRY" "$ZSHRC_FILE"; then
+    if ! grep -q -F "$EZA_ENTRY" "$ZSHRC_FILE"; then
         printf "\n$EZA_ENTRY\n" >> "$ZSHRC_FILE"
     fi
 
@@ -100,9 +100,10 @@ fzf() {
     FZF_ENTRY="${FZF_TITLE}
     [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
     [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh"
-    if ! grep -F "$FZF_ENTRY" "$ZSHRC_FILE"; then
+    if ! grep -q -F "$FZF_ENTRY" "$ZSHRC_FILE"; then
         printf "\n$FZF_ENTRY\n" >> "$ZSHRC_FILE"
     fi
+    printf "\t[OK] FZF key bindings and completions added successfully 🚀\n"
 }
 
 
