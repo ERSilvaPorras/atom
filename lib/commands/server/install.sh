@@ -2,6 +2,7 @@
 
 set -eu
 
+. "$SCRIPT_DIR/../lib/helpers/colors.sh"
 ZSHRC_FILE="$HOME/.zshrc"
 
 setup_ufw() {
@@ -21,8 +22,11 @@ setup_unattended_upgrades() {
 }
 
 import_zsh() {
-    printf "\t[INFO] Setting up Zsh and Oh My Zsh...\n"
+    printf "\t[INFO] Setting up Zsh...\n"
     if [ ! -d "$INSTALL_DIR" ]; then
+        . "$SCRIPT_DIR/../lib/commands/sshup.sh"
+        read -p "Enter SSH_NAME: " SSH_NAME
+        sshup "$SSH_NAME"
         git clone "$REPO_BACKUP_URL" "$INSTALL_DIR"
         printf "\t[INFO] Cloning repository... 🚀\n"
     else
@@ -34,7 +38,8 @@ import_zsh() {
     if [ -f "$ZSHRC_FILE_PATH" ] && [ -f "$ZSHRC_LOCAL_PATH" ]; then
         cp "$ZSHRC_LOCAL_PATH" "$ZSHRC_LOCAL_PATH.original"
         cat "$ZSHRC_FILE_PATH" >> "$ZSHRC_LOCAL_PATH"
-    fi      
+    fi
+    printf "\t[OK] Zsh setup completed successfully 🚀\n"      
 }
 
 setup_zsh() {
@@ -47,8 +52,13 @@ setup_zsh() {
         mkdir -p "$PLUGINS_DIR"
     fi
     
-    git clone "$ZSH_AUTOSUGGESTIONS_URL" "$PLUGINS_DIR/zsh-autosuggestions"
-    git clone "$ZSH_SYNTAX_HIGHLIGHTING_URL" "$PLUGINS_DIR/zsh-syntax-highlighting"
+    if [ ! -d "$PLUGINS_DIR/zsh-autosuggestions" ]; then
+        git clone "$ZSH_AUTOSUGGESTIONS_URL" "$PLUGINS_DIR/zsh-autosuggestions"
+    fi
+
+    if [ ! -d "$PLUGINS_DIR/zsh-syntax-highlighting" ]; then
+        git clone "$ZSH_SYNTAX_HIGHLIGHTING_URL" "$PLUGINS_DIR/zsh-syntax-highlighting"
+    fi
 
     if ! grep -q "source $PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh" "$ZSHRC_FILE"; then
         printf "\nsource $PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh\n" >> "$ZSHRC_FILE"
@@ -94,6 +104,7 @@ fzf() {
         printf "\n$FZF_ENTRY\n" >> "$ZSHRC_FILE"
     fi
 }
+
 
 install_basic_packages() {
     sudo apt update
