@@ -43,7 +43,7 @@ sshc() {
     echo "[INFO] Remember to add the public key to your GitHub account. ⚠️"
     . "$SCRIPT_DIR/../lib/helpers/colors.sh"
     if [ "$IS_SERVER" = "y" ]; then
-        printf "Please add the following public key to your GitHub account:\n\n%s\n" ${blue}"$(cat "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub")${reset}"
+        printf "Please add the following public key to your GitHub account:\n\n\n${blue}$(cat "$HOME/.ssh/id_${TYPE_ENCRYPTION}_$NAME_SSH_KEY.pub")${reset}"
     else
         nohup xdg-open "$URL_GITHUB_SSH" > /dev/null 2>&1 &
     fi
