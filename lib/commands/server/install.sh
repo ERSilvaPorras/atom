@@ -23,10 +23,10 @@ setup_unattended_upgrades() {
 
 import_zsh() {
     printf "\t[INFO] Setting up Zsh...\n"
+    . "$SCRIPT_DIR/../lib/commands/sshup.sh"
+    read -p "Enter SSH_NAME: " SSH_NAME
+    sshup "$SSH_NAME"
     if [ ! -d "$INSTALL_DIR" ]; then
-        . "$SCRIPT_DIR/../lib/commands/sshup.sh"
-        read -p "Enter SSH_NAME: " SSH_NAME
-        sshup "$SSH_NAME"
         git clone "$REPO_BACKUP_URL" "$INSTALL_DIR"
         printf "\t[INFO] Cloning repository...${reset} 🚀\n"
     else
