@@ -58,18 +58,3 @@ case "$COMMAND" in
         echo "Command not found"
         ;;
 esac
-
-Host ghp
-    HostName github.com
-    User git
-    IdentityFile ~/.ssh/id_ed25519_ghp
-    IdentitiesOnly yes # Fuerza el uso exclusivo de la clave, causa problemas si tienes varias claves
-    AddKeysToAgent yes # Agrega automaticamente al ssh-agent
-Host server-repo
-   HostName ec2-54-90-163-56.compute-1.amazonaws.com
-   User ubuntu
-   IdentityFile ~/.ssh/server-repo.pem
-Host server-test
-    HostName ec2-3-84-136-183.compute-1.amazonaws.com
-    User ubuntu
-    IdentityFile ~/.ssh/server-test.pem
