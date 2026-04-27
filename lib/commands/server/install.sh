@@ -5,6 +5,7 @@ set -eu
 ZSHRC_FILE="$HOME/.zshrc"
 
 setup_ufw() {
+    printf "\t[INFO] Configuring UFW...\n"
     ufw --version
     sudo ufw allow OpenSSH
     sudo ufw allow 80/tcp
@@ -14,11 +15,13 @@ setup_ufw() {
 }
 
 setup_unattended_upgrades() {
+    printf "\t[INFO] Configuring Unattended Upgrades...\n"
     sudo dpkg-reconfigure -plow unattended-upgrades
     printf "\t[OK] Unattended Upgrades configured successfully 🚀\n"
 }
 
 import_zsh() {
+    printf "\t[INFO] Setting up Zsh and Oh My Zsh...\n"
     if [ ! -d "$INSTALL_DIR" ]; then
         git clone "$REPO_BACKUP_URL" "$INSTALL_DIR"
         printf "\t[INFO] Cloning repository... 🚀\n"
@@ -35,6 +38,7 @@ import_zsh() {
 }
 
 setup_zsh() {
+    printf "\t[INFO] Installing Zsh plugins...\n"
     PLUGINS_DIR="$HOME/.local/share/zsh/plugins"
     ZSH_AUTOSUGGESTIONS_URL="https://github.com/zsh-users/zsh-autosuggestions.git"
     ZSH_SYNTAX_HIGHLIGHTING_URL="https://github.com/zsh-users/zsh-syntax-highlighting.git"
@@ -64,6 +68,7 @@ setup_zsh() {
 }
 
 eza() {
+    printf "\t[INFO] Setting up EZA aliases...\n"
     EZA_TITLE="# EZA - Aliases ########################################################################"
     EZA_ENTRY="${EZA_TITLE}
     alias ls='eza --icons'
@@ -80,6 +85,7 @@ eza() {
 }
 
 fzf() {
+    printf "\t[INFO] Setting up FZF key bindings and completions...\n"
     FZF_TITLE="# FZF - [CTRL] + [R] Interactive #######################################################"
     FZF_ENTRY="${FZF_TITLE}
     [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
@@ -101,7 +107,8 @@ install_basic_packages() {
         tree \
         eza \
         fzf
-    
+    printf "\t[OK] Basic packages installed successfully 🚀\n"
+    printf "\t[INFO] Setting up configurations...\n"
     setup_ufw
     setup_unattended_upgrades
     import_zsh
