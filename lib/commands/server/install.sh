@@ -82,7 +82,7 @@ setup_zsh() {
 
 eza() {
     printf "\t[INFO] Setting up EZA aliases...\n"
-    EZA_TITLE="# EZA - Aliases ########################################################################"
+    EZA_TITLE="# Custom Alias #########################################################################"
     EZA_ENTRY="${EZA_TITLE}
     alias ls='eza --icons'
     alias ll='eza -lah'
