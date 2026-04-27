@@ -12,13 +12,13 @@ setup_ufw() {
     sudo ufw allow 80/tcp
     sudo ufw allow 443/tcp
     sudo ufw enable
-    printf "\t[OK] UFW configured successfully 🚀\n"
+    printf "\t${green}[OK] UFW configured successfully${reset} 🚀\n"
 }
 
 setup_unattended_upgrades() {
     printf "\t[INFO] Configuring Unattended Upgrades...\n"
     sudo dpkg-reconfigure -plow unattended-upgrades
-    printf "\t[OK] Unattended Upgrades configured successfully 🚀\n"
+    printf "\t${green}[OK] Unattended Upgrades configured successfully${reset} 🚀\n"
 }
 
 import_zsh() {
@@ -28,10 +28,10 @@ import_zsh() {
         read -p "Enter SSH_NAME: " SSH_NAME
         sshup "$SSH_NAME"
         git clone "$REPO_BACKUP_URL" "$INSTALL_DIR"
-        printf "\t[INFO] Cloning repository... 🚀\n"
+        printf "\t[INFO] Cloning repository...${reset} 🚀\n"
     else
         git -C "$INSTALL_DIR" pull
-        printf "\t[INFO] Repository already exists. Pulling latest changes... 🚀\n"
+        printf "\t[INFO] Repository already exists. Pulling latest changes...${reset} 🚀\n"
     fi
 
     ZSHRC_LOCAL_PATH="$HOME/.zshrc"
@@ -39,7 +39,7 @@ import_zsh() {
         cp "$ZSHRC_LOCAL_PATH" "$ZSHRC_LOCAL_PATH.original"
         cat "$ZSHRC_FILE_PATH" >> "$ZSHRC_LOCAL_PATH"
     fi
-    printf "\t[OK] Zsh setup completed successfully 🚀\n"      
+    printf "\t${green}[OK] Zsh setup completed successfully${reset} 🚀\n"      
 }
 
 setup_zsh() {
@@ -74,7 +74,7 @@ setup_zsh() {
             printf "\t[INFO] Default shell changed to zsh. Please log out and log back in for changes to take effect.\n"
         fi
     fi
-    printf "\t[OK] Zsh and plugins installed successfully 🚀\n"
+    printf "\t${green}[OK] Zsh and plugins installed successfully${reset} 🚀\n"
 }
 
 eza() {
@@ -91,7 +91,7 @@ eza() {
         printf "\n$EZA_ENTRY\n" >> "$ZSHRC_FILE"
     fi
 
-    printf "\t[OK] EZA aliases added successfully 🚀\n"
+    printf "\t${green}[OK] EZA aliases added successfully${reset} 🚀\n"
 }
 
 fzf() {
@@ -103,7 +103,7 @@ fzf() {
     if ! grep -q -F "$FZF_ENTRY" "$ZSHRC_FILE"; then
         printf "\n$FZF_ENTRY\n" >> "$ZSHRC_FILE"
     fi
-    printf "\t[OK] FZF key bindings and completions added successfully 🚀\n"
+    printf "\t${green}[OK] FZF key bindings and completions added successfully${reset} 🚀\n"
 }
 
 
@@ -119,7 +119,7 @@ install_basic_packages() {
         tree \
         eza \
         fzf
-    printf "\t[OK] Basic packages installed successfully 🚀\n"
+    printf "\t${green}[OK] Basic packages installed successfully${reset} 🚀\n"
     printf "\t[INFO] Setting up configurations...\n"
     setup_ufw
     setup_unattended_upgrades
