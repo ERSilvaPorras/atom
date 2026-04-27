@@ -16,6 +16,10 @@ server() {
             . "$SCRIPT_DIR/../lib/commands/server/export.sh"
             export_server "$@"
             ;;
+        packages)
+            . "$SCRIPT_DIR/../lib/commands/server/install.sh"
+            install_basic_packages "$@"
+            ;;
         *)
             echo "Command not found"
             ;;
