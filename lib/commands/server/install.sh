@@ -81,6 +81,12 @@ setup_zsh() {
     fi
 
     zsh --version
+    read -p "Enter USER_NAME: " USER_NAME
+    # Verify if the user have password set, if not set a password for the user
+    if ! sudo grep -q "^${USER_NAME}:" /etc/shadow | grep -q "^[^:]*:[!*]:"; then
+        printf "\t[INFO] User ${USER_NAME} does not have a password set. Setting a password...\n"
+        sudo passwd "${USER_NAME}"
+    fi
     if [ "$SHELL" != "$(which zsh)" ]; then
         if chsh -s "$(which zsh)"; then
             printf "\t[INFO] Default shell changed to zsh. Please log out and log back in for changes to take effect.\n"
