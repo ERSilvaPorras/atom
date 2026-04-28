@@ -22,8 +22,9 @@ handler_pem() {
         printf "\t[INFO] SSH config entry for ${PEM_NAME} already exists. Skipping addition.\n"
         exit 0
     else
+        read -p "Enter Host: " HOST
         read -p "Enter DNS_SERVER: " DNS_SERVER
-        SSH_CONFIG_ENTRY="Host ${PEM_NAME}
+        SSH_CONFIG_ENTRY="Host ${HOST}
         HostName ${DNS_SERVER}
         User ubuntu
         IdentityFile ~/.ssh/${PEM_NAME}.pem"
