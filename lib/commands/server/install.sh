@@ -35,8 +35,10 @@ import_zsh() {
     fi
 
     ZSHRC_LOCAL_PATH="$HOME/.zshrc"
-    if [ -f "$ZSHRC_FILE_PATH" ] && [ -f "$ZSHRC_LOCAL_PATH" ]; then
-        cp "$ZSHRC_LOCAL_PATH" "$ZSHRC_LOCAL_PATH.original"
+    if [ -f "$ZSHRC_FILE_PATH" ]; then
+        if [ -f "$ZSHRC_LOCAL_PATH" ]; then
+            cp "$ZSHRC_LOCAL_PATH" "$ZSHRC_LOCAL_PATH.original"
+        fi
         if ! grep -q -F "ERSP Custom" "$ZSHRC_LOCAL_PATH"; then
             cat "$ZSHRC_FILE_PATH" >> "$ZSHRC_LOCAL_PATH"
         fi
