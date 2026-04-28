@@ -18,11 +18,11 @@ handler_pem() {
         printf "\t[ERROR] Failed to set permissions to 400 for ${PEM_NAME}.pem ❌\n"
     fi
 
-    if grep -q "Host ${PEM_NAME}" "$SSH_DIR/config" 2>/dev/null; then
+    read -p "Enter Host: " HOST
+    if grep -q "Host ${HOST}" "$SSH_DIR/config" 2>/dev/null; then
         printf "\t[INFO] SSH config entry for ${PEM_NAME} already exists. Skipping addition.\n"
         exit 0
     else
-        read -p "Enter Host: " HOST
         read -p "Enter DNS_SERVER: " DNS_SERVER
         SSH_CONFIG_ENTRY="Host ${HOST}
         HostName ${DNS_SERVER}
