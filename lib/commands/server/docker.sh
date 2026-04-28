@@ -32,4 +32,7 @@ install_docker() {
     sudo systemctl start docker
     
     printf "\t${green}[OK] Docker installed successfully ${reset} 🚀\n"
+
+    sudo usermod -aG docker "$USER"
+    printf "\t${green}[OK] Added user $USER to docker group. Please log out and log back in for changes to take effect.${reset}\n"
 }
