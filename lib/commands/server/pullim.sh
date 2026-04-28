@@ -21,7 +21,7 @@ pull_images() {
     docker login ghcr.io -u "$USER_DOCKER"
     for image in $(cat "$IMAGES_DOCKER_FILE_PATH"); do
         printf "\t[INFO] Pulling image: $image...\n"
-        if ! sudo docker pull "$image"; then
+        if ! docker pull "$image"; then
             printf "\t[ERROR] Failed to pull image: $image. Skipping...\n"
         else
             printf "\t[INFO] Successfully pulled image: $image\n"
