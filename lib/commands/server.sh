@@ -24,6 +24,10 @@ server() {
             . "$SCRIPT_DIR/../lib/commands/server/docker.sh"
             install_docker "$@"
             ;;
+        pullim)
+            . "$SCRIPT_DIR/../lib/commands/server/pullim.sh"
+            pull_images "$@"
+            ;;
         *)
             echo "Command not found"
             ;;
