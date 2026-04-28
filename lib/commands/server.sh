@@ -20,6 +20,10 @@ server() {
             . "$SCRIPT_DIR/../lib/commands/server/install.sh"
             install_basic_packages "$@"
             ;;
+        docker)
+            . "$SCRIPT_DIR/../lib/commands/server/docker.sh"
+            install_docker "$@"
+            ;;
         *)
             echo "Command not found"
             ;;
