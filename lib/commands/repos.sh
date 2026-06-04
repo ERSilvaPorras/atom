@@ -47,26 +47,31 @@ status_repos() {
         sub_info="\t$sub_info📝 Uncommitted changes in ${repo_dir}"
         fi
 
-        LOCAL=$(git rev-parse @)
-        REMOTE=$(git rev-parse @{u} 2>/dev/null)
-        BASE=$(git merge-base @ @{u} 2>/dev/null)
-
-
         color=${green}
         status="✅ Sin commits pendientes"
-        if [ "$LOCAL" = "$REMOTE" ]; then
-            if [ ! -z "$sub_info" ]; then
+
+        if git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
+            LOCAL=$(git rev-parse @)
+            REMOTE=$(git rev-parse @{u})
+            BASE=$(git merge-base @ @{u})
+
+            if [ "$LOCAL" = "$REMOTE" ]; then
+                if [ ! -z "$sub_info" ]; then
+                    color=${yellow}
+                fi
+            elif [ "$LOCAL" = "$BASE" ]; then
                 color=${yellow}
+                status="⬇️  Necesita pull"
+            elif [ "$REMOTE" = "$BASE" ]; then
+                color=${yellow}
+                status="⬆️  Tiene commits sin subir"
+            else
+                color=${yellow}
+                status="🔀 Hay divergencia entre local y remoto"
             fi
-        elif [ "$LOCAL" = "$BASE" ]; then
-            color=${yellow}
-            status="⬇️  Necesita pull"
-        elif [ "$REMOTE" = "$BASE" ]; then
-            color=${yellow}
-            status="⬆️  Tiene commits sin subir"
         else
             color=${yellow}
-            status="🔀 Hay divergencia entre local y remoto"
+            status="⚠️  La rama actual no tiene upstream"
         fi
 
         # Print repository information with status
