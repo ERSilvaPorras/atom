@@ -36,6 +36,13 @@ Cuando el repositorio sea público:
 ```sh
 curl -fsSL https://raw.githubusercontent.com/ersilvaporras/atom/main/install.sh | zsh
 ```
+Instalar los paquetes necesarios y docker:
+```sh
+atom version
+atom server packages
+atom server docker
+atom sshc
+```
 
 El instalador:
 
