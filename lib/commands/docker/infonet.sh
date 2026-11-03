@@ -26,5 +26,4 @@ overview_networks() {
         done
     done
     
-    printf "\nScript finalizado con exito\n"
 }
