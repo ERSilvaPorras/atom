@@ -7,7 +7,7 @@ overview_networks() {
         return 1
     fi
 
-    printf "\n%-25s %-15s %-40s %-18s\n" "CONTAINER NAME" "CONTAINER IP" "NETWORK NAME" "NETWORK SUBNET"
+    printf "%-25s %-15s %-40s %-18s\n" "CONTAINER NAME" "CONTAINER IP" "NETWORK NAME" "NETWORK SUBNET"
 
 
     command docker container ps --filter "status=running" --format "{{.ID}}\t{{.Names}}" | while read -r id name; do
