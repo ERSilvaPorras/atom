@@ -15,6 +15,7 @@ Base:
 
 - `sh` (POSIX)
 - `git`
+- `docker` (for docker subcommad)
 
 Según comando:
 
@@ -22,6 +23,13 @@ Según comando:
 - `code` (VS Code CLI): `atom vscode export`, `atom vscode import`
 - `tree` y `xclip`: `atom repo-tree`
 - `xclip` o `pbcopy` + `xdg-open`: `atom sshc`
+
+## Actualizar version de desarrollo (`~/.atom`)
+```sh
+sync -avui --exclude '.git' --prune-empty-dirs ./ ~/.atom/
+```
+> [!CAUTION]
+> Al momento de actualizar los nuevos cambios subidos a `atom` se debe desintalar y reinstalar (evita problemas de merge).
 
 ## Instalación
 
@@ -104,6 +112,10 @@ Los comandos `vscode` trabajan sobre el repo de backup:
 | `atom server docker` | - | Instala Docker y configura el servicio. |
 | `atom server pullim` | - | Pull de imágenes listadas en el backup (`images-docker.txt`) (requiere login a registry). |
 
+## Docker
+| Comando | Argumentos | Qué hace |
+| `atom docker nets` | - | Lista informacion sobre contenedores y sus redes. |
+| `atom docker tnets` | - | Imprime arbol de subredes y sus contenedores. |
 
 ## Ejemplos
 
@@ -126,6 +138,9 @@ atom vscode export work
 # restaurar extensiones y settings
 atom vscode import
 atom vscode settings
+
+atom docker nets
+atom docker tnets
 ```
 
 ## Solución de problemas
