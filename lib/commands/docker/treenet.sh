@@ -23,6 +23,5 @@ tree_networks() {
                 printf "\t└── 📦 %-25s  %s\n" "$c_name" "$c_ip"
             done
         fi
-        printf "\n"
     done
 }
